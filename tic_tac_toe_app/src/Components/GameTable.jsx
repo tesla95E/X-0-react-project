@@ -26,6 +26,7 @@ function GameTable() {
   return (
     <>
       <h1>TIC TAC TOE</h1>
+      <h2 className="PlayerNames">Este randul lui: {player}</h2>
       <div className="GameTable">
         <div onClick={() => handleClick(0)} id="0" className="grid-item"></div>
         <div onClick={() => handleClick(1)} id="1" className="grid-item"></div>

@@ -1,5 +1,13 @@
+h1 {
+  text-align: center;
+}
+
+.PlayerNames {
+  margin-left: 200px;
+}
+
 .GameTable {
-  margin-top: 100px;
+  margin-top: 40px;
   margin-left: 20px;
   display: grid;
   width: 600px;
