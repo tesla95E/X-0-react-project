@@ -2,22 +2,30 @@ h1 {
   text-align: center;
 }
 
-.PlayerNames {
-  margin-left: 200px;
+.leftSide {
+  width: 50%;
+  display: grid;
+  grid-row-gap: 20px;
+  margin-left: 50px;
+  justify-content: center;
+}
+.header {
+  width: 100%;
+  display: grid;
+  justify-content: center;
 }
 
 .winner {
-  margin-left: 230px;
+  text-align: center;
 }
 
 .GameTable {
-  margin-top: 40px;
-  margin-left: 20px;
   display: grid;
   width: 600px;
   grid-template-columns: auto auto auto;
   background-color: #2196f3;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .grid-item {
@@ -27,4 +35,12 @@ h1 {
   font-size: 30px;
   text-align: center;
   height: 150px;
+}
+
+.resetButton {
+  width: 100px;
+  height: 30px;
+  border-radius: 3px;
+  background-color: rgba(255, 0, 0, 0.739);
+  color: antiquewhite;
 }

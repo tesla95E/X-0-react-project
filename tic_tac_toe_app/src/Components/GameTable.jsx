@@ -31,20 +31,60 @@ function GameTable() {
   return (
     <>
       <h1>TIC TAC TOE</h1>
-      <h2 className="PlayerNames">Este randul lui: {player}</h2>
-      <h2 className="winner">{GameResult(array)}</h2>
-      <div className="GameTable">
-        <div onClick={() => handleClick(0)} id="0" className="grid-item"></div>
-        <div onClick={() => handleClick(1)} id="1" className="grid-item"></div>
-        <div onClick={() => handleClick(2)} id="2" className="grid-item"></div>
-        <div onClick={() => handleClick(3)} id="3" className="grid-item"></div>
-        <div onClick={() => handleClick(4)} id="4" className="grid-item"></div>
-        <div onClick={() => handleClick(5)} id="5" className="grid-item"></div>
-        <div onClick={() => handleClick(6)} id="6" className="grid-item"></div>
-        <div onClick={() => handleClick(7)} id="7" className="grid-item"></div>
-        <div onClick={() => handleClick(8)} id="8" className="grid-item"></div>
+      <div className="leftSide">
+        <header className="header">
+          <h2 className="PlayerNames">Este randul lui: {player}</h2>
+          <h2 className="winner">{GameResult(array)}</h2>
+        </header>
+        <div className="GameTable">
+          <div
+            onClick={() => handleClick(0)}
+            id="0"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(1)}
+            id="1"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(2)}
+            id="2"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(3)}
+            id="3"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(4)}
+            id="4"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(5)}
+            id="5"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(6)}
+            id="6"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(7)}
+            id="7"
+            className="grid-item"
+          ></div>
+          <div
+            onClick={() => handleClick(8)}
+            id="8"
+            className="grid-item"
+          ></div>
+        </div>
+        <button className="resetButton">Reset</button>
       </div>
-      ;
     </>
   );
 }
