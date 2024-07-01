@@ -48,7 +48,18 @@ export function GameResult(array) {
       return "A castigat Player 2";
     }
   } else {
-    return "egal";
+    let isDraw = true;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== "X" && array[i] !== "0") {
+        isDraw = false;
+        break;
+      }
+    }
+    if (isDraw) {
+      return "Egalitate";
+    } else {
+      return "Joc in desfasurare";
+    }
   }
 }
 

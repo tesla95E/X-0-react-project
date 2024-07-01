@@ -8,16 +8,21 @@ function GameTable() {
   ]);
   const [player, setPlayer] = useState("Player 1");
   const handleClick = (id) => {
-    if (player == "Player 1") {
-      document.getElementById(`${id}`).innerHTML = "X";
-      setPlayer(array.splice(id, 1, "X"));
-      console.log(player);
-      setPlayer("Player 2");
-    } else {
-      document.getElementById(`${id}`).innerHTML = "0";
-      console.log(player);
-      setPlayer(array.splice(id, 1, "0"));
-      setPlayer("Player 1");
+    if (array[id] != "X" && array[id] != "0") {
+      const newArray = [...array];
+      if (player == "Player 1") {
+        newArray[id] = "X";
+        setArray(newArray);
+        document.getElementById(`${id}`).innerHTML = "X";
+        console.log(player);
+        setPlayer("Player 2");
+      } else {
+        document.getElementById(`${id}`).innerHTML = "0";
+        console.log(player);
+        newArray[id] = "0";
+        setArray(newArray);
+        setPlayer("Player 1");
+      }
     }
     GameResult(array);
     console.log(array);
@@ -27,6 +32,7 @@ function GameTable() {
     <>
       <h1>TIC TAC TOE</h1>
       <h2 className="PlayerNames">Este randul lui: {player}</h2>
+      <h2 className="winner">{GameResult(array)}</h2>
       <div className="GameTable">
         <div onClick={() => handleClick(0)} id="0" className="grid-item"></div>
         <div onClick={() => handleClick(1)} id="1" className="grid-item"></div>
