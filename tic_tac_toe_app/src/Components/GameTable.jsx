@@ -16,17 +16,35 @@ function GameTable() {
         document.getElementById(`${id}`).innerHTML = "X";
         console.log(player);
         setPlayer("Player 2");
+        localStorage.setItem("player", player);
+        const stringifiedArray = JSON.stringify(newArray);
+        localStorage.setItem("array", stringifiedArray);
       } else {
         document.getElementById(`${id}`).innerHTML = "0";
         console.log(player);
         newArray[id] = "0";
         setArray(newArray);
         setPlayer("Player 1");
+        localStorage.setItem("player", player);
+        const stringifiedArray = JSON.stringify(newArray);
+        localStorage.setItem("array", stringifiedArray);
       }
     }
     GameResult(array);
     console.log(array);
     console.log(GameResult(array));
+  };
+  const reset = () => {
+    setArray([100, 101, 102, 103, 104, 105, 106, 107, 108]);
+    for (let i = 0; i < 9; i++) {
+      document.getElementById(`${i}`).innerHTML = "";
+      setPlayer("Player 1");
+      const stringifiedArray = JSON.stringify([
+        100, 101, 102, 103, 104, 105, 106, 107, 108,
+      ]);
+      localStorage.setItem("player", player);
+      localStorage.setItem("array", stringifiedArray);
+    }
   };
   return (
     <>
@@ -83,7 +101,9 @@ function GameTable() {
             className="grid-item"
           ></div>
         </div>
-        <button className="resetButton">Reset</button>
+        <button onClick={reset} className="resetButton">
+          Reset
+        </button>
       </div>
     </>
   );
