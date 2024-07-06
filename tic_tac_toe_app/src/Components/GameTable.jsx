@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import GameResult from "./GameLogic";
 import "./GameTable.css";
 
@@ -7,6 +7,15 @@ function GameTable() {
     100, 101, 102, 103, 104, 105, 106, 107, 108,
   ]);
   const [player, setPlayer] = useState("Player 1");
+
+  useEffect(() => {
+    const savedPlayer = localStorage.getItem("player");
+    const savedArray = JSON.parse(localStorage.getItem("array"));
+    if (savedPlayer && savedArray) {
+      setPlayer(savedPlayer);
+      setArray(savedArray);
+    }
+  }, []);
   const handleClick = (id) => {
     if (array[id] != "X" && array[id] != "0") {
       const newArray = [...array];
