@@ -41,12 +41,51 @@ h1 {
   height: 150px;
 }
 
+.gameTableFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputContainer {
+  display: flex;
+}
 .resetButton {
   width: 100px;
   height: 30px;
   border-radius: 3px;
   background-color: rgba(255, 0, 0, 0.739);
   color: antiquewhite;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+  height: 40px;
+  border-radius: 3px;
+}
+.addName {
+  background-color: rgb(248, 248, 248);
+  height: 90%;
+  font-size: larger;
+}
+input {
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+form:focus-within {
+  outline: 1px solid #2196f3;
+}
+
+.addButton {
+  border: 1px solid #2196f3;
+  background: #2196f3;
+  color: white;
+  height: 100%;
 }
 
 .middleSide {

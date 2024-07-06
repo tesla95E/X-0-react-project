@@ -13,6 +13,10 @@ function GameTable() {
     () => localStorage.getItem("player") || "Player 1"
   );
 
+  const [playerName, setPlayerName] = useState(
+    () => localStorage.getItem("playerName") || []
+  );
+
   useEffect(() => {
     const savedPlayer = localStorage.getItem("player");
     const savedArray = JSON.parse(localStorage.getItem("array"));
@@ -61,6 +65,10 @@ function GameTable() {
     }
     localStorage.setItem("array", JSON.stringify(initialArray));
     localStorage.setItem("player", player);
+  };
+
+  const addPlayerName = () => {
+    const PlayerNameArray = [...playerName];
   };
 
   return (
@@ -117,9 +125,16 @@ function GameTable() {
             className="grid-item"
           ></div>
         </div>
-        <button onClick={reset} className="resetButton">
-          Reset
-        </button>
+        <div className="gameTableFooter">
+          <button onClick={reset} className="resetButton">
+            Reset
+          </button>
+          <form>
+            <h3 className="inputTitle">Adauga nume:</h3>
+            <input type="text" className="addName"></input>
+            <button className="addButton">Adauga</button>
+          </form>
+        </div>
       </div>
       <div className="middleSide">
         <div className="dropdown">
