@@ -64,8 +64,7 @@ function GameTable() {
   };
 
   return (
-    <>
-      <h1>TIC TAC TOE</h1>
+    <div className="page">
       <div className="leftSide">
         <header className="header">
           <h2 className="PlayerNames">Este randul lui: {player}</h2>
@@ -123,20 +122,24 @@ function GameTable() {
         </button>
       </div>
       <div className="middleSide">
-        <div class="dropdown">
-          <button class="dropbtn">Select Player 1</button>
-          <div class="dropdown-content">
-            <button>Reset</button>
+        <div className="dropdown">
+          <button className="dropbtn">Select Player 1</button>
+          <div className="dropdown-content">
+            <h3>andy</h3>
+            <h3>andy</h3>
+            <h3>andy</h3>
           </div>
         </div>
-        <div class="dropdown">
-          <button class="dropbtn">Select Player 2</button>
-          <div class="dropdown-content">
-            <button>Reset</button>
+        <div className="dropdown">
+          <button className="dropbtn">Select Player 2</button>
+          <div className="dropdown-content">
+            <h3>andy</h3>
+            <h3>andy</h3>
+            <h3>andy</h3>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
