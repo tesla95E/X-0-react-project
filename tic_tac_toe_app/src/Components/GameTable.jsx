@@ -1,12 +1,17 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import GameResult from "./GameLogic";
 import "./GameTable.css";
 
 function GameTable() {
-  const [array, setArray] = useState([
-    100, 101, 102, 103, 104, 105, 106, 107, 108,
-  ]);
-  const [player, setPlayer] = useState("Player 1");
+  const [array, setArray] = useState(
+    () =>
+      JSON.parse(localStorage.getItem("array")) || [
+        100, 101, 102, 103, 104, 105, 106, 107, 108,
+      ]
+  );
+  const [player, setPlayer] = useState(
+    () => localStorage.getItem("player") || "Player 1"
+  );
 
   useEffect(() => {
     const savedPlayer = localStorage.getItem("player");
@@ -16,45 +21,48 @@ function GameTable() {
       setArray(savedArray);
     }
   }, []);
+
+  useEffect(() => {
+    for (let i = 0; i < array.length; i++) {
+      const element = document.getElementById(`${i}`);
+      if (array[i] === "X" || array[i] === "0") {
+        element.innerHTML = array[i];
+      } else {
+        element.innerHTML = "";
+      }
+    }
+  }, [array, player]);
+
   const handleClick = (id) => {
-    if (array[id] != "X" && array[id] != "0") {
+    if (array[id] !== "X" && array[id] !== "0") {
       const newArray = [...array];
-      if (player == "Player 1") {
+      if (player === "Player 1") {
         newArray[id] = "X";
         setArray(newArray);
-        document.getElementById(`${id}`).innerHTML = "X";
-        console.log(player);
         setPlayer("Player 2");
+        localStorage.setItem("array", JSON.stringify(newArray));
         localStorage.setItem("player", player);
-        const stringifiedArray = JSON.stringify(newArray);
-        localStorage.setItem("array", stringifiedArray);
       } else {
-        document.getElementById(`${id}`).innerHTML = "0";
-        console.log(player);
         newArray[id] = "0";
         setArray(newArray);
         setPlayer("Player 1");
+        localStorage.setItem("array", JSON.stringify(newArray));
         localStorage.setItem("player", player);
-        const stringifiedArray = JSON.stringify(newArray);
-        localStorage.setItem("array", stringifiedArray);
       }
     }
-    GameResult(array);
-    console.log(array);
-    console.log(GameResult(array));
   };
+
   const reset = () => {
-    setArray([100, 101, 102, 103, 104, 105, 106, 107, 108]);
+    const initialArray = [100, 101, 102, 103, 104, 105, 106, 107, 108];
+    setArray(initialArray);
+    setPlayer("Player 1");
     for (let i = 0; i < 9; i++) {
       document.getElementById(`${i}`).innerHTML = "";
-      setPlayer("Player 1");
-      const stringifiedArray = JSON.stringify([
-        100, 101, 102, 103, 104, 105, 106, 107, 108,
-      ]);
-      localStorage.setItem("player", player);
-      localStorage.setItem("array", stringifiedArray);
     }
+    localStorage.setItem("array", JSON.stringify(initialArray));
+    localStorage.setItem("player", player);
   };
+
   return (
     <>
       <h1>TIC TAC TOE</h1>
@@ -113,6 +121,20 @@ function GameTable() {
         <button onClick={reset} className="resetButton">
           Reset
         </button>
+      </div>
+      <div className="middleSide">
+        <div class="dropdown">
+          <button class="dropbtn">Select Player 1</button>
+          <div class="dropdown-content">
+            <button>Reset</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Select Player 2</button>
+          <div class="dropdown-content">
+            <button>Reset</button>
+          </div>
+        </div>
       </div>
     </>
   );
