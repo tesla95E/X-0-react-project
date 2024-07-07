@@ -102,11 +102,6 @@ form:focus-within {
   background-color: #3e8e41;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-  text-align: center;
-}
-
 .dropbtn {
   background-color: #2196f3;
   color: white;
@@ -126,6 +121,11 @@ form:focus-within {
   z-index: 1;
 }
 
+.dropdown:hover .dropdown-content {
+  display: block;
+  text-align: center;
+}
+
 .dropdown-content button {
   color: black;
   padding: 12px 16px;
@@ -135,4 +135,11 @@ form:focus-within {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.dropdownNames {
+  border: none;
+  background-color: #f9f9f9;
+  font-size: large;
+  min-width: 160px;
 }

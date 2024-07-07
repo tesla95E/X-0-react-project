@@ -17,12 +17,18 @@ function GameTable() {
     () => localStorage.getItem("playerName") || []
   );
 
+  const [inputValue, setInputValue] = useState("");
+
   useEffect(() => {
     const savedPlayer = localStorage.getItem("player");
     const savedArray = JSON.parse(localStorage.getItem("array"));
+    const savedPlayerNames = JSON.parse(localStorage.getItem("playerName"));
     if (savedPlayer && savedArray) {
       setPlayer(savedPlayer);
       setArray(savedArray);
+    }
+    if (savedPlayerNames) {
+      setPlayerName(savedPlayerNames);
     }
   }, []);
 
@@ -68,7 +74,10 @@ function GameTable() {
   };
 
   const addPlayerName = () => {
-    const PlayerNameArray = [...playerName];
+    const updatedPlayerName = [...playerName, inputValue];
+    setPlayerName(updatedPlayerName);
+    setInputValue("");
+    localStorage.setItem("playerName", JSON.stringify(updatedPlayerName));
   };
 
   return (
@@ -129,10 +138,23 @@ function GameTable() {
           <button onClick={reset} className="resetButton">
             Reset
           </button>
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addPlayerName();
+            }}
+          >
             <h3 className="inputTitle">Adauga nume:</h3>
-            <input type="text" className="addName"></input>
-            <button className="addButton">Adauga</button>
+            <input
+              type="text"
+              id="input"
+              className="addName"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button type="submit" className="addButton">
+              Adauga
+            </button>
           </form>
         </div>
       </div>
@@ -140,17 +162,25 @@ function GameTable() {
         <div className="dropdown">
           <button className="dropbtn">Select Player 1</button>
           <div className="dropdown-content">
-            <h3>andy</h3>
-            <h3>andy</h3>
-            <h3>andy</h3>
+            <h3>
+              {playerName.map((name, index) => (
+                <button className="dropdownNames" key={index} value={name}>
+                  {name}
+                </button>
+              ))}
+            </h3>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Select Player 2</button>
           <div className="dropdown-content">
-            <h3>andy</h3>
-            <h3>andy</h3>
-            <h3>andy</h3>
+            <h3>
+              {playerName.map((name, index) => (
+                <button className="dropdownNames" key={index} value={name}>
+                  {name}
+                </button>
+              ))}
+            </h3>
           </div>
         </div>
       </div>
