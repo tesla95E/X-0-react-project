@@ -19,16 +19,29 @@ function GameTable() {
 
   const [inputValue, setInputValue] = useState("");
 
+  const [player1Name, setPlayer1Name] = useState("");
+  const [player2Name, setPlayer2Name] = useState("");
+
   useEffect(() => {
     const savedPlayer = localStorage.getItem("player");
     const savedArray = JSON.parse(localStorage.getItem("array"));
     const savedPlayerNames = JSON.parse(localStorage.getItem("playerName"));
+    const savedPlayer1Name = JSON.parse(localStorage.getItem("player1Name"));
+    const savedPlayer2Name = JSON.parse(localStorage.getItem("player2Name"));
     if (savedPlayer && savedArray) {
       setPlayer(savedPlayer);
       setArray(savedArray);
     }
     if (savedPlayerNames) {
       setPlayerName(savedPlayerNames);
+    }
+
+    if (savedPlayer1Name) {
+      setPlayer1Name(savedPlayer1Name);
+    }
+
+    if (savedPlayer2Name) {
+      setPlayer2Name(savedPlayer2Name);
     }
   }, []);
 
@@ -78,6 +91,13 @@ function GameTable() {
     setPlayerName(updatedPlayerName);
     setInputValue("");
     localStorage.setItem("playerName", JSON.stringify(updatedPlayerName));
+  };
+
+  const selectPlayer1 = (name) => {
+    localStorage.setItem("player1Name", name);
+  };
+  const selectPlayer2 = (name) => {
+    localStorage.setItem("player2Name", name);
   };
 
   return (
@@ -164,7 +184,12 @@ function GameTable() {
           <div className="dropdown-content">
             <h3>
               {playerName.map((name, index) => (
-                <button className="dropdownNames" key={index} value={name}>
+                <button
+                  className="dropdownNames"
+                  key={index}
+                  value={name}
+                  onClick={() => selectPlayer1(name)}
+                >
                   {name}
                 </button>
               ))}
@@ -176,7 +201,12 @@ function GameTable() {
           <div className="dropdown-content">
             <h3>
               {playerName.map((name, index) => (
-                <button className="dropdownNames" key={index} value={name}>
+                <button
+                  className="dropdownNames"
+                  key={index}
+                  value={name}
+                  onClick={() => selectPlayer2(name)}
+                >
                   {name}
                 </button>
               ))}
