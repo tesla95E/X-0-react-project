@@ -21,6 +21,7 @@ function GameTable() {
 
   const [player1Name, setPlayer1Name] = useState("");
   const [player2Name, setPlayer2Name] = useState("");
+  const [currentPlayer, setCurrentPlayer] = useState("");
 
   useEffect(() => {
     const savedPlayer = localStorage.getItem("player");
@@ -63,12 +64,14 @@ function GameTable() {
         newArray[id] = "X";
         setArray(newArray);
         setPlayer("Player 2");
+        setCurrentPlayer(player1Name);
         localStorage.setItem("array", JSON.stringify(newArray));
         localStorage.setItem("player", player);
       } else {
         newArray[id] = "0";
         setArray(newArray);
         setPlayer("Player 1");
+        setCurrentPlayer(player2Name);
         localStorage.setItem("array", JSON.stringify(newArray));
         localStorage.setItem("player", player);
       }
@@ -104,7 +107,7 @@ function GameTable() {
     <div className="page">
       <div className="leftSide">
         <header className="header">
-          <h2 className="PlayerNames">Este randul lui: {player}</h2>
+          <h2 className="PlayerNames">Este randul lui: {currentPlayer}</h2>
           <h2 className="winner">{GameResult(array)}</h2>
         </header>
         <div className="GameTable">
