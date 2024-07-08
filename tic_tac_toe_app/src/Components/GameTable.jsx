@@ -88,8 +88,8 @@ function GameTable() {
     }
     localStorage.setItem("array", JSON.stringify(initialArray));
     localStorage.setItem("player", player);
-    localStorage.setItem("player1Name", currentPlayer);
-    localStorage.setItem("player2Name", currentPlayer);
+    localStorage.setItem("player1Name", "");
+    localStorage.setItem("player2Name", "");
   };
 
   const addPlayerName = () => {

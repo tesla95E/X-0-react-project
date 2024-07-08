@@ -1,51 +1,51 @@
-export function GameResult(array) {
+export function GameResult(array, player1Name, player2Name) {
   if (array[0] == array[1] && array[0] == array[2]) {
     if (array[0] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[3] == array[4] && array[3] == array[5]) {
     if (array[3] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[6] == array[7] && array[6] == array[8]) {
     if (array[6] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[0] == array[3] && array[0] == array[6]) {
     if (array[0] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[1] == array[4] && array[1] == array[7]) {
     if (array[1] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[2] == array[5] && array[2] == array[8]) {
     if (array[2] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[0] == array[4] && array[0] == array[8]) {
     if (array[0] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else if (array[2] == array[4] && array[2] == array[6]) {
     if (array[2] == "X") {
-      return "A castigat Player 1";
+      return `A castigat ${player1Name}`;
     } else {
-      return "A castigat Player 2";
+      return `A castigat ${player2Name}`;
     }
   } else {
     let isDraw = true;
