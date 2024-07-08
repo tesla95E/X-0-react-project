@@ -14,7 +14,7 @@ function GameTable() {
   );
 
   const [playerName, setPlayerName] = useState(
-    () => localStorage.getItem("playerName") || []
+    () => JSON.parse(localStorage.getItem("playerName")) || []
   );
 
   const [inputValue, setInputValue] = useState("");
