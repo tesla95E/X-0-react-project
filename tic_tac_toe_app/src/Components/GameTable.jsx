@@ -111,7 +111,9 @@ function GameTable() {
       <div className="leftSide">
         <header className="header">
           <h2 className="PlayerNames">Este randul lui: {currentPlayer}</h2>
-          <h2 className="winner">{GameResult(array)}</h2>
+          <h2 className="winner">
+            {GameResult(array, player1Name, player2Name)}
+          </h2>
         </header>
         <div className="GameTable">
           <div
