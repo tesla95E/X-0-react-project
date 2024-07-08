@@ -27,8 +27,8 @@ function GameTable() {
     const savedPlayer = localStorage.getItem("player");
     const savedArray = JSON.parse(localStorage.getItem("array"));
     const savedPlayerNames = JSON.parse(localStorage.getItem("playerName"));
-    const savedPlayer1Name = JSON.parse(localStorage.getItem("player1Name"));
-    const savedPlayer2Name = JSON.parse(localStorage.getItem("player2Name"));
+    const savedPlayer1Name = localStorage.getItem("player1Name");
+    const savedPlayer2Name = localStorage.getItem("player2Name");
     if (savedPlayer && savedArray) {
       setPlayer(savedPlayer);
       setArray(savedArray);
@@ -82,11 +82,14 @@ function GameTable() {
     const initialArray = [100, 101, 102, 103, 104, 105, 106, 107, 108];
     setArray(initialArray);
     setPlayer("Player 1");
+    setCurrentPlayer("");
     for (let i = 0; i < 9; i++) {
       document.getElementById(`${i}`).innerHTML = "";
     }
     localStorage.setItem("array", JSON.stringify(initialArray));
     localStorage.setItem("player", player);
+    localStorage.setItem("player1Name", currentPlayer);
+    localStorage.setItem("player2Name", currentPlayer);
   };
 
   const addPlayerName = () => {
