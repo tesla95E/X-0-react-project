@@ -58,23 +58,27 @@ function GameTable() {
   }, [array, player]);
 
   const handleClick = (id) => {
-    if (array[id] !== "X" && array[id] !== "0") {
-      const newArray = [...array];
-      if (player === "Player 1") {
-        newArray[id] = "X";
-        setArray(newArray);
-        setPlayer("Player 2");
-        setCurrentPlayer(player1Name);
-        localStorage.setItem("array", JSON.stringify(newArray));
-        localStorage.setItem("player", player);
-      } else {
-        newArray[id] = "0";
-        setArray(newArray);
-        setPlayer("Player 1");
-        setCurrentPlayer(player2Name);
-        localStorage.setItem("array", JSON.stringify(newArray));
-        localStorage.setItem("player", player);
+    if (player1Name && player2Name) {
+      if (array[id] !== "X" && array[id] !== "0") {
+        const newArray = [...array];
+        if (player === "Player 1") {
+          newArray[id] = "X";
+          setArray(newArray);
+          setPlayer("Player 2");
+          setCurrentPlayer(player1Name);
+          localStorage.setItem("array", JSON.stringify(newArray));
+          localStorage.setItem("player", player);
+        } else {
+          newArray[id] = "0";
+          setArray(newArray);
+          setPlayer("Player 1");
+          setCurrentPlayer(player2Name);
+          localStorage.setItem("array", JSON.stringify(newArray));
+          localStorage.setItem("player", player);
+        }
       }
+    } else {
+      alert("Va rugam selectati jucatorii partidei");
     }
   };
 
@@ -83,6 +87,8 @@ function GameTable() {
     setArray(initialArray);
     setPlayer("Player 1");
     setCurrentPlayer("");
+    setPlayer1Name("");
+    setPlayer2Name("");
     for (let i = 0; i < 9; i++) {
       document.getElementById(`${i}`).innerHTML = "";
     }
